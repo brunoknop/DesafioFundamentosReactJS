@@ -16,11 +16,9 @@ interface TaskListProps {
 export function TaskList({tasks, setTasks}: TaskListProps) {
 
   function deleteTask(id: string) {
-    console.log(`deleteTask ${id}`)
     const taskListWithoutDeletedOne = tasks.filter(task => {
       return task.id !== id
     })
-    console.log(taskListWithoutDeletedOne)
     setTasks(taskListWithoutDeletedOne)
   }
 

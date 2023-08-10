@@ -8,16 +8,7 @@ import styles from './App.module.css'
 
 export function App() {
 
-  const [tasks, setTasks] = useState([{
-      id: uuidv4(),
-      message: "Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer.",
-      done: false
-    },
-    {
-      id: uuidv4(),
-      message: "corrigir os bugs gerados pela última publicação lançada no dia 24 de agosto",
-      done: true
-    }])
+  const [tasks, setTasks] = useState(Array<TaskInterface>)
 
     function addNewTask(comment: string) {
     const newTask: TaskInterface = {
@@ -25,7 +16,6 @@ export function App() {
       message: comment,
       done: false
     }
-    console.log(newTask)
     setTasks([newTask, ...tasks])
   }
 
