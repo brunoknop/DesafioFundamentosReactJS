@@ -1,8 +1,6 @@
-import { useState } from 'react'
 import styles from './styles/TaskList.module.css'
 import { ClipboardText } from '@phosphor-icons/react'
 import { Task } from './Task';
-import { v4 as uuidv4 } from 'uuid';
 
 export interface TaskInterface {
   id: string;
@@ -10,33 +8,38 @@ export interface TaskInterface {
   done: boolean
 }
 
-export function TaskList() {
+interface TaskListProps {
+  tasks: TaskInterface[];
+  setTasks: (tasks: TaskInterface[]) => void;
+}
 
-  const [tasks, setTasks] = useState(
-    [{
-      id: "1",
-      message: "Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer.",
-      done: false
-    },
-    {
-      id: "2",
-      message: "corrigir os bugs gerados pela última publicação lançada no dia 24 de agosto",
-      done: true
-    }]
-  )
+export function TaskList({tasks, setTasks}: TaskListProps) {
 
   function deleteTask(id: string) {
+    console.log(`deleteTask ${id}`)
     const taskListWithoutDeletedOne = tasks.filter(task => {
       return task.id !== id
     })
+    console.log(taskListWithoutDeletedOne)
     setTasks(taskListWithoutDeletedOne)
+  }
+
+  function checkTask(id: string){
+    const taskChecked = tasks.find(task => task.id === id)
+    if (taskChecked!.done) taskChecked!.done = false
+    else taskChecked!.done = true
+    const listTasksWithChekeds = tasks.map(task => {
+      if (task.id === taskChecked!.id) return taskChecked!;
+      else return task; 
+    })
+    setTasks(listTasksWithChekeds);
   }
 
   return (
     <div className={styles.container}>
       <header className={styles.header}>
-        <p className={styles.createdTasks}>Tarefas criadas<span>0</span></p>
-        <p className={styles.doneTasks}>Concluídas<span>0</span></p>
+        <p className={styles.createdTasks}>Tarefas criadas<span>{tasks.length}</span></p>
+        <p className={styles.doneTasks}>Concluídas<span>{tasks.length === 0 ? "0" : tasks.filter(task => {return task.done}).length + " de " + tasks.length}</span></p>
       </header>
       {tasks.length > 0
       ? tasks.map(task => {
@@ -45,6 +48,7 @@ export function TaskList() {
             key={task.id}
             task={task}
             onDeleteTask={deleteTask}
+            onCheckTask={checkTask}
           />
         ) 
       })
