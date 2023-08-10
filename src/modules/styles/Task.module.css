@@ -1,0 +1,72 @@
+.container {
+  display: flex;
+  padding: 1rem;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+
+  border-radius: 8px;
+  border: 1px solid var(--gray-400);
+  background: var(--gray-500);
+  box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.06);
+}
+
+.checkbox {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.checkboxText {
+  line-height: 1.6;
+}
+
+.Icon {
+  background: transparent;
+  border: 2px solid var(--blue);
+  width: 1.125rem;
+  height: 1.125rem;
+  border-radius: 50%;
+
+  transition: color 0.2s, background 0.2s;
+}
+
+.Icon:Hover {
+  color: var(--blue-dark);
+  background: rgba(30, 111, 159, .2);
+}
+
+.checkedIcon {
+  border: none;
+  width: 1.125rem;
+  height: 1.125rem;
+  border-radius: 50%;
+  background: var(--purple-dark);
+  color: var(--gray-100);
+  line-height: 0;
+
+  transition: background 0.2s;
+}
+
+
+.checkedIcon:Hover {
+  background: var(--purple);
+}
+
+
+.deleteButton {
+  background: transparent;
+  border: none;
+  color: var(--gray-300);
+  border-radius: 8px;
+  cursor: pointer;
+  padding: 0.375rem;
+  line-height: 0;
+
+  transition: background 0.2s, color 0.2s;
+}
+
+.deleteButton:hover {
+  background: var(--gray-400);
+  color: var(--danger);
+}

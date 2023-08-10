@@ -1,0 +1,50 @@
+.container {
+  max-width: 46rem;
+  margin: -2rem auto;
+
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
+.input {
+  display: flex;
+  font-size: 1rem;
+  padding: 1rem;
+  align-items: center;
+
+  color: var(--gray-100);
+
+  border-radius: 8px;
+  border: 1px solid var(--gray-700);
+  background: var(--gray-500);
+
+  line-height: 1.6;
+}
+
+.input:focus {
+  outline: 1px solid var(--purple-dark);
+}
+
+.button {
+  display: flex;
+  padding: 1rem;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+
+  border-radius: 8px;
+  border: none;
+  background: var(--blue-dark);
+
+  color: var(--gray-100);
+  font-weight: 700;
+  line-height: 1.8;
+
+  transition: background 0.2s;
+}
+
+.button:hover {
+  background: var(--blue);
+}
